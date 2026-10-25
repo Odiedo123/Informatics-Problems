@@ -7,8 +7,8 @@ int main(){
     int t;
     cin >> t;
     while(t--){
-        int n;
-        cin >> n;
+        int n,k;
+        cin >> n >> k; 
         vector<int> nums(n);
         int start = 0;
         for(int i = 0; i < n;i++){
