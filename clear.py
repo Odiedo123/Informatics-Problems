@@ -1,18 +1,14 @@
 from pathlib import Path
 
-directory =[r"EASY",
-            r"HARD",
-            r"MEDIUM",
-            r"LEARNING",
-            r"SLIGHTLY ABOVE MEDIUM",
-            r"Miscaleneous"
-]
+parent_folder = Path(__file__).resolve().parent.parent
 
 keep_extensions = {".cpp", ".obj", ".py"}
 
-for element in directory:
-    for file_path in Path(element).iterdir():
-        if file_path.is_file():
-            if file_path.suffix not in keep_extensions:
-                print(f"Deleting: {file_path}")
-                file_path.unlink()
+for file_path in parent_folder.rglob("*"):
+    if file_path.is_file():
+        if file_path.resolve() == Path(__file__).resolve():
+            continue
+            
+        if file_path.suffix.lower() not in keep_extensions:
+            print(f"Deleting: {file_path}")
+            file_path.unlink()
